@@ -1,20 +1,18 @@
+# azure-pipelines.yml
 trigger:
-- main
+- main  # hoặc nhánh bạn muốn trigger
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: MyAgent  # tên agent pool self-hosted
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+jobs:
+- job: BuildAndTest
+  displayName: 'Build and Test Job'
+  steps:
+  - task: Checkout@1
+    displayName: 'Checkout code'
 
-- script: npm install
-  displayName: 'Install dependencies'
-
-- script: npm run build
-  displayName: 'Build project'
-
-- script: npm test
-  displayName: 'Run tests'
+  - script: |
+      echo "Hello, this is running on MyAgent!"
+      # Thêm các lệnh build/test của bạn
+    displayName: 'Run script'
