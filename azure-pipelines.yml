@@ -1,18 +1,18 @@
-# azure-pipelines.yml
 trigger:
-- main  # hoặc nhánh bạn muốn trigger
+- main   # hoặc nhánh mà bạn muốn trigger
 
 pool:
-  name: MyAgent  # tên agent pool self-hosted
+  name: 'MyAgent'   # tên agent pool bạn tạo trên Azure DevOps (phải khớp chính xác)
 
 jobs:
 - job: BuildAndTest
   displayName: 'Build and Test Job'
   steps:
-  - task: Checkout@1
+  - checkout: self
     displayName: 'Checkout code'
 
   - script: |
       echo "Hello, this is running on MyAgent!"
-      # Thêm các lệnh build/test của bạn
-    displayName: 'Run script'
+      echo "Build step running..."
+      # Ví dụ: dotnet build hoặc npm install tuỳ dự án
+    displayName: 'Run build script'
