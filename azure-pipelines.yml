@@ -1,8 +1,8 @@
 trigger:
-- main   # hoặc nhánh mà bạn muốn trigger
+- main
 
 pool:
-  name: 'MyAgent'   # tên agent pool bạn tạo trên Azure DevOps (phải khớp chính xác)
+  name: 'MyAgent'   # đúng tên Agent Pool bạn đã đăng ký
 
 jobs:
 - job: BuildAndTest
@@ -12,7 +12,6 @@ jobs:
     displayName: 'Checkout code'
 
   - script: |
-      echo "Hello, this is running on MyAgent!"
-      echo "Build step running..."
-      # Ví dụ: dotnet build hoặc npm install tuỳ dự án
-    displayName: 'Run build script'
+      echo Hello from MyAgent!
+      dir
+    displayName: 'Run simple test script'
