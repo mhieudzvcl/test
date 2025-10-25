@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: 'MyAgent'   # đúng tên Agent Pool bạn đã đăng ký
+  name: 'MyAgent'
 
 jobs:
 - job: BuildAndTest
